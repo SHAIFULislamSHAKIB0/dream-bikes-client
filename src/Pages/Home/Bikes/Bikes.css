@@ -1,0 +1,12 @@
+.images{
+    height: 260px;
+    width: 350px;
+}
+.our-services{
+    border: 2px solid gainsboro;
+    /* grid-gap: 20px; */
+    margin: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}

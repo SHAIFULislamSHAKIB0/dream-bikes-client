@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "CBR1000RR-R",
+        "cc": "1000",
+        "price": "10000",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/CBR_1000_RR-R_SP_2020.jpg/420px-CBR_1000_RR-R_SP_2020.jpg",
+        "des": "Dream bikes brings complete range of new bikes in bd. You can search bikes by applying filters such as by budget, by preferred price, by bodytype, by brand, by engine cc and features. Also stay updated with upcoming motorcycles in India, compare two wheelers in your price range and stay tuned to latest bike news."
+    },
+    {
+        "id": 2,
+        "name": "CBR REPSOL",
+        "cc": "150",
+        "price": "5000",
+        "img": "https://www.banglamotor.net/images/honda/honda-cb150r-repsol-img1.jpg",
+        "des": "A few years ago, I met a woman at a wedding who told me that she pictured marriage like two astronauts floating around in space, tethered together."
+    },
+    {
+        "id": 3,
+        "name": "honda-cbr1000rr",
+        "cc": "1000",
+        "price": "10000",
+        "img": "https://ic1.maxabout.us/autos/tw_india//H/2017/3/honda-cbr1000rr-repsol-edition.jpg",
+        "des": "BikeDekho brings complete range of new bikes in India. You can search bikes by applying filters such as by budget, by preferred price, by bodytype, by brand, by engine cc and features. Also stay updated with upcoming motorcycles in India, compare two wheelers in your price range and stay tuned to latest bike news."
+    },
+    {
+        "id": 4,
+        "name": "CBR 150R",
+        "cc": "150",
+        "price": "5000",
+        "img": "https://imgd.aeplcdn.com/310x174/bw/models/honda-cbr150-r-deluxe-119.jpg?20190103151915&q=75",
+        "des": "A few years ago, I met a woman at a wedding who told me that she pictured marriage like two astronauts floating around in space, tethered together."
+    },
+    {
+        "id": 5,
+        "name": "yamaha-mt15-2021",
+        "cc": "150",
+        "price": "5000",
+        "img": "https://media.zigcdn.com/media/content/2021/Feb/yamaha-mt15-2021-abu.jpg",
+        "des": "BikeDekho brings complete range of new bikes in India. You can search bikes by applying filters such as by budget, by preferred price, by bodytype, by brand, by engine cc and features. Also stay updated with upcoming motorcycles in India, compare two wheelers in your price range and stay tuned to latest bike news."
+    },
+    {
+        "id": 6,
+        "name": "yamaha-mt15-2021",
+        "cc": "150",
+        "price": "5200",
+        "img": "https://i.ytimg.com/vi/VPEQx8m15W0/maxresdefault.jpg",
+        "des": "BikeDekho brings complete range of new bikes in India. You can search bikes by applying filters such as by budget, by preferred price, by bodytype, by brand, by engine cc and features. Also stay updated with upcoming motorcycles in India, compare two wheelers in your price range and stay tuned to latest bike news."
+    },
+    {
+        "id": 7,
+        "name": "yamaha-r15-v3-indo",
+        "cc": "150",
+        "price": "5200",
+        "img": "https://bd.gaadicdn.com/upload/newsimages/60068d6697289.jpg",
+        "des": "A few years ago, I met a woman at a wedding who told me that she pictured marriage like two astronauts floating around in space, tethered together."
+    },
+    {
+        "id": 8,
+        "name": "yamaha-r15-v4",
+        "cc": "1500",
+        "price": "12000",
+        "img": "https://www.banglamotor.net/images/yamaha/yamaha-r15-v3-2nd2.jpg",
+        "des": "BikeDekho brings complete range of new bikes in India. You can search bikes by applying filters such as by budget, by preferred price, by bodytype, by brand, by engine cc and features. Also stay updated with upcoming motorcycles in India, compare two wheelers in your price range and stay tuned to latest bike news."
+    },
+    {
+        "id": 9,
+        "name": "suzuki-gsx-r150",
+        "cc": "150",
+        "price": "5200",
+        "img": "https://www.bikebd.com/wp-content/uploads/2020/12/suzuki-gsx-r150-black.webp",
+        "des": "A few years ago, I met a woman at a wedding who told me that she pictured marriage like two astronauts floating around in space, tethered together."
+    },
+    {
+        "id": 10,
+        "name": "yamaha-mt15-2021",
+        "cc": "150",
+        "price": "4000",
+        "img": "https://i.ytimg.com/vi/VPEQx8m15W0/maxresdefault.jpg",
+        "des": "BikeDekho brings complete range of new bikes in India. You can search bikes by applying filters such as by budget, by preferred price, by bodytype, by brand, by engine cc and features. Also stay updated with upcoming motorcycles in India, compare two wheelers in your price range and stay tuned to latest bike news."
+    }
+]

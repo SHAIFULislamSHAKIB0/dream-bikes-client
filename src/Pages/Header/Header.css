@@ -1,0 +1,10 @@
+.nav-link {
+  list-style: none;
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgb(201, 97, 97);
+  cursor: pointer;
+  padding: 3px;
+  text-decoration: none;
+}

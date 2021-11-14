@@ -1,0 +1,12 @@
+.contact-btn{
+  background-color:#23da4e ;
+  outline: none;
+  border: none;
+  padding: 10px 18px;
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.notFound img{
+height: 500px;
+}
