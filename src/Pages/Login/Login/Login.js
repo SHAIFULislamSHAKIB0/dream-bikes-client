@@ -1,99 +1,85 @@
+import { Alert, CircularProgress, Container, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import Button from '@mui/material/Button'
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-import './Login.css'
+
+
 
 const Login = () => {
-    const { signInWithGoogle, setUser, loginWithEmailAndPassword, setIsLoading, isLoading } = useAuth();
+    const [loginData, setLoginData] = useState({})
+    const { authError, user, loginUser, isLoading, signInWithGoogle } = useAuth();
 
-    const history = useHistory()
-    const location = useLocation()
-
-    const url = location.state?.from || "/home"
-
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const location = useLocation();
+    const history = useHistory();
 
 
-    const handleGetEmail = (e) => {
-        setEmail(e.target.value);
+    const handleOnChange = e => {
+        const field = e.target.name;
+        const value = e.target.value;
+        // console.log(name, value) 
+        const newLoginData = { ...loginData }
+        newLoginData[field] = value;
+        // console.log(newLoginData);
+        setLoginData(newLoginData);
+
     }
-
-    const handleGetPassword = (e) => {
-        setPassword(e.target.value);
+    const handleLoginSubmit = e => {
+        loginUser(loginData.email, loginData.password, location, history)
+        e.preventDefault()
     }
-
-
-
-
-    const handleLoginWithEmailAndPassword = (e) => {
-        e.preventDefault();
-
-        loginWithEmailAndPassword(email, password)
-            .then((res) => {
-                setIsLoading(true)
-                setUser(res.user);
-                history.push(url)
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-            })
-            .finally(() => {
-                setIsLoading(false)
-            })
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(location, history);
     }
-
-
-
-
-
-    const handleGoogleLogin = () => {
-        signInWithGoogle()
-            .then((res) => {
-                setIsLoading(true)
-                setUser(res.user)
-                history.push(url)
-            }
-            )
-            .catch((err) => console.log(err))
-            .finally(() => {
-                setIsLoading(false)
-            })
-    };
-
-
 
     return (
-        <div className="text-center mt-4 m-3">
-            <h2 className="m-3">Please Login </h2>
-            <form onSubmit={handleLoginWithEmailAndPassword}>
-                <input type="email" onBlur={handleGetEmail} placeholder="Email" />
-                <br />
-                <input type="password" onBlur={handleGetPassword} placeholder="Password" />
-                <br />
-                <input type="submit" value="login" className="contact-btn m-2" />
+        <Container>
+            <Grid container spacing={2}>
+                <Grid item xs={12} md={6}>
+                    <Typography sx={{ mt: 10, m: 5 }} variant="body1" gutterBottom>
+                        Login
+                    </Typography>
+                    <form onSubmit={handleLoginSubmit}>
+                        <TextField
+                            sx={{ width: '100%', m: 1 }}
+                            id="standard-basic"
+                            label="Your Email"
+                            name="email"
+                            onBlur={handleOnChange}
+                            variant="standard" />
 
-            </form>
-            <button className="btn btn-warning m-2 font-weight-bold" onClick={handleGoogleLogin}>Google Sign In</button>
-            <p> New User ?<Link to="/register">Please register</Link ></p>
+                        <TextField sx={{ width: '100%', m: 1 }}
+                            id="standard-password-input"
+                            label="Password"
+                            type="password"
+                            name="password"
+                            onBlur={handleOnChange}
+                            autoComplete="current-password"
+                            variant="standard"
+                        />
+                        <Button type="submit" sx={{ width: '100%', m: 1 }} variant="outlined">Login</Button>
+                        <NavLink to='/register' style={{ textDecoration: 'none' }}><Button variant="text">New in this site?Please register.</Button></NavLink>
+                    </form>
+                    {isLoading && <CircularProgress />}
+                    {
+                        user?.email && <Alert severity="success">Successfully login!!</Alert>
+                    }
+                    {
+                        authError && <Alert severity="error">{authError}</Alert>
+                    }
 
-        </div>
+                    <p>----------------------or----------------------------</p>
+
+                    <Button onClick={handleGoogleSignIn} sx={{ width: '100%', m: 1 }}
+                        variant="outlined">Google sign In</Button>
+                </Grid>
+                <Grid item xs={12} md={6}>
+
+                </Grid>
+
+            </Grid>
+        </Container>
     );
-
-
-
-
-
-
-
 };
 
 export default Login;
-
-
-/* <div className="login-items">
-           <h2>Please Login</h2>
-           <button onClick={handleGoogleLogin} className="btn btn-warning">Google Sign In</button>
-       </div> */

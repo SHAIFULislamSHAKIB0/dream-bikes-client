@@ -8,7 +8,7 @@ const ManageAllOrders = () => {
     // console.log(orders)
 
     useEffect(() => {
-        fetch('http://localhost:5000/orders')
+        fetch('https://hidden-anchorage-44915.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
@@ -18,7 +18,7 @@ const ManageAllOrders = () => {
     }
 
     const handleDelete = (id) => {
-        const url = `http://localhost:5000/orders/${id}`
+        const url = `https://hidden-anchorage-44915.herokuapp.com/orders/${id}`
         const proceed = window.confirm('Are you sure,you want to delete?')
 
         if (proceed) {

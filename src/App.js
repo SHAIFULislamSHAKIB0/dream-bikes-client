@@ -11,14 +11,8 @@ import Explores from './Pages/Explore/Explores';
 import Register from './Pages/Login/Register/Register';
 import DashBoard from './Pages/DashBoard/DashBoard/DashBoard';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
-import PayMent from './Pages/DashBoard/PayMent/PayMent';
-import MyOrders from './Pages/DashBoard/MyOrders/MyOrders';
-import Review from './Pages/DashBoard/Review/Review';
-import AddBikes from './Pages/AddBikes/AddBikes';
-import MakeAdmin from './Pages/DashBoard/MakeAdmin/MakeAdmin';
-import ManageBikes from './Pages/DashBoard/ManageBikes/ManageBikes';
 import Bookings from './Pages/Bookings/Bookings';
-import ManageAllOrders from './Pages/ManageAllOrders/ManageAllOrders';
+
 
 
 function App() {
@@ -44,33 +38,14 @@ function App() {
             <Route path="/explore">
               <Explores></Explores>
             </Route>
-            <Route path="/dashboard">
+            <PrivateRoute path="/dashboard">
               <DashBoard></DashBoard>
-            </Route>
-            <Route path="/payment">
-              <PayMent></PayMent>
-            </Route>
-            <Route path="/myorders">
-              <MyOrders></MyOrders>
-            </Route>
-            <Route path="/review">
-              <Review></Review>
-            </Route>
-            <Route path="/addbikes">
-              <AddBikes></AddBikes>
-            </Route>
-            <Route path="/makeadmin">
-              <MakeAdmin></MakeAdmin>
-            </Route>
-            <Route path="/managebikes">
-              <ManageBikes></ManageBikes>
-            </Route>
-            <Route path="/booking/:bikeId">
+            </PrivateRoute>
+
+            <PrivateRoute path="/booking/:bikeId">
               <Bookings></Bookings>
-            </Route>
-            <Route path="/manageAllOrders">
-              <ManageAllOrders></ManageAllOrders>
-            </Route>
+            </PrivateRoute>
+
 
 
             <Route path="*">

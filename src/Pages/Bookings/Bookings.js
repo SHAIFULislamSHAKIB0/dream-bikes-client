@@ -13,7 +13,7 @@ const Bookings = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bikes/${bikeId}`)
+        fetch(`https://hidden-anchorage-44915.herokuapp.com/bikes/${bikeId}`)
             .then(res => res.json())
             .then(data => setBikes(data))
     }, [])
@@ -21,7 +21,7 @@ const Bookings = () => {
 
     const onSubmit = data => {
         // console.log(data)
-        axios.post('http://localhost:5000/orders', data)
+        axios.post('https://hidden-anchorage-44915.herokuapp.com/orders', data)
             .then(res => {
                 // console.log(res)
                 if (res.data.insertedId) {

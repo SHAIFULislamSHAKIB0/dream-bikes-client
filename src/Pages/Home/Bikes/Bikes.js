@@ -9,7 +9,7 @@ const Bikes = () => {
     const bikess = bikes.slice(0, 6)
 
     useEffect(() => {
-        fetch('http://localhost:5000/bikes')
+        fetch('https://hidden-anchorage-44915.herokuapp.com/bikes')
             .then(res => res.json())
             .then(data => setBikes(data))
     }, [])

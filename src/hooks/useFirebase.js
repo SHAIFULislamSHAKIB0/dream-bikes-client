@@ -1,81 +1,139 @@
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signOut, onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider, updateProfile, signInWithPopup } from "firebase/auth";
 import { useState, useEffect } from 'react';
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
 
-
-
 initializeAuthentication();
-const useFirebase = () => {
-    const [user, setUser] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-    const googleProvider = new GoogleAuthProvider()
 
+const useFirebase = () => {
     const auth = getAuth();
+    const [user, setUser] = useState({})
+    const [isLoading, setIsLoading] = useState(true);
+    const [authError, setAuthError] = useState('');
+    const [admin, setAdmin] = useState(false);
+
+
+    const googleProvider = new GoogleAuthProvider();
+
+    const registerUsers = (email, password, name, history) => {
+        setIsLoading(true);
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                setAuthError('');
+                const newUser = { email, displayName: name };
+                setUser(newUser);
+                // save user to database
+                saveUser(email, name, 'POST');
+                // send name to firebase after creation.
+                updateProfile(auth.currentUser, {
+                    displayName: name
+                }).then(() => {
+
+                }).catch((error) => {
+
+                });
+
+                history.replace('/');
+            })
+            .catch((error) => {
+                setAuthError(error.message);
+            })
+            .finally(() => setIsLoading(false));
+    }
+
+    const loginUser = (email, password, location, history) => {
+        setIsLoading(true);
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
+                setAuthError('');
+            })
+            .catch((error) => {
+
+                setAuthError(error.message);
+            })
+            .finally(() => setIsLoading(false));
+
+    }
+
+    const signInWithGoogle = (location, history) => {
+        setIsLoading(true);
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                const user = result.user;
+                saveUser(user.email, user.displayName, 'PUT')
+                setAuthError('');
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
+
+            }).catch((error) => {
+                setAuthError(error.message);
+            })
+            .finally(() => setIsLoading(false));
+
+    }
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            console.log(user);
-            if (user) {
+        fetch(`https://hidden-anchorage-44915.herokuapp.com/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
 
+    // here we observe user state
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            // setIsLoading(true);
+            if (user) {
                 setUser(user)
+                /* getIdToken(user)
+                    .then(idToken => {
+                        setToken(idToken)
+                    }) */
             } else {
                 setUser({})
             }
-            setIsLoading(false)
-        })
-        return () => unsubscribe()
+            setIsLoading(false);
+        });
+        return () => unsubscribe;
     }, [])
 
-
-    const signInWithGoogle = () => {
-        return signInWithPopup(auth, googleProvider)
-
-    }
-
-
-    const createAccountWithGoogle = (email, password) => {
-
-        return createUserWithEmailAndPassword(auth, email, password)
-    }
-
-
-    const loginWithEmailAndPassword = (email, password) => {
-        return signInWithEmailAndPassword(auth, email, password)
-    }
-
-
-    const updateName = (name) => {
-        updateProfile(auth.currentUser, {
-            displayName: name
-        }).then(() => {
-            const newUser = { ...user, displayName: name } // recommend
-            setUser(newUser)
-
-            // ...
-        }).catch((error) => {
-            // An error occurred
-            // ...
-        });
-    }
-
     const logOut = () => {
-        // console.log("logout");
+        setIsLoading(true);
         signOut(auth).then(() => {
-            setUser({})
+
         }).catch((error) => {
-            // An error happened.
-        });
+
+        })
+            .finally(() => setIsLoading(false));
     }
+
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch('https://hidden-anchorage-44915.herokuapp.com/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
+
 
     return {
-        user, setUser,
-        isLoading, setIsLoading,
-        updateName,
+        registerUsers,
+        isLoading,
+        admin,
+        loginUser,
         signInWithGoogle,
-        createAccountWithGoogle,
-        loginWithEmailAndPassword,
-        logOut
+        user,
+        authError,
+        logOut,
     }
-}
 
-export default useFirebase;
+}
+export default useFirebase
+
+
+

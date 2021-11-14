@@ -7,7 +7,7 @@ const AddBikes = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data)
-        axios.post('http://localhost:5000/bikes', data)
+        axios.post('https://hidden-anchorage-44915.herokuapp.com/bikes', data)
             .then(res => {
                 // console.log(res)
                 if (res.data.insertedId) {
@@ -18,7 +18,7 @@ const AddBikes = () => {
     }
     return (
         <div className="add-bike m-4">
-            <h3>Please  addPlace</h3>
+            <h3>Please  addBikes</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input {...register("name", { required: true, maxLength: 20 })} placeholder="name" />
 

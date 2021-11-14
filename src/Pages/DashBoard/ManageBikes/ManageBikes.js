@@ -7,7 +7,7 @@ const ManageBikes = () => {
     const { isLoading } = useAuth();
 
     useEffect(() => {
-        fetch('http://localhost:5000/bikes')
+        fetch('https://hidden-anchorage-44915.herokuapp.com/bikes')
             .then(res => res.json())
             .then(data => setBikes(data))
     }, [])
@@ -20,7 +20,7 @@ const ManageBikes = () => {
         const proceed = window.confirm('Are you sure,you want to delete?')
 
         if (proceed) {
-            const url = `http://localhost:5000/bikes/${id}`
+            const url = `https://hidden-anchorage-44915.herokuapp.com/bikes/${id}`
             fetch(url, {
                 method: 'DELETE'
             })
