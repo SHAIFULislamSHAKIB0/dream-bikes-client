@@ -35,11 +35,14 @@ const DashBoard = () => {
 
                     <Link to="/home"><Button className="btn-primary m-2 p-2 rounded-2" color="inherit">Home</Button></Link>
 
-                    <Link to={`${url}/payment`}><Button className="btn-primary m-2 p-2 rounded-2" color="inherit">Payment</Button></Link>
+                    {!admin && <div>
+                        <Link to={`${url}/payment`}><Button className="btn-primary m-2 p-2 rounded-2" color="inherit">Payment</Button></Link>
 
-                    <Link to={`${url}/myorders`}><Button className="btn-primary m-2 p-2 rounded-2" color="inherit">My Orders</Button></Link>
+                        <Link to={`${url}/myorders`}><Button className="btn-primary m-2 p-2 rounded-2" color="inherit">My Orders</Button></Link>
 
-                    <Link to={`${url}/review`}><Button className="btn-primary m-2 p-2 rounded-2" color="inherit">Review</Button></Link>
+                        <Link to={`${url}/review`}><Button className="btn-primary m-2 p-2 rounded-2" color="inherit">Review</Button></Link>
+
+                    </div>}
 
                     {
                         admin && <div>
