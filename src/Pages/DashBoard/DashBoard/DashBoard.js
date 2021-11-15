@@ -34,6 +34,7 @@ const DashBoard = () => {
                 <div className="col-md-4">
 
                     <Link to="/home"><Button className="btn-primary m-2 p-2 rounded-2" color="inherit">Home</Button></Link>
+                    <Link to="/dashboard"><Button className="btn-primary m-2 p-2 rounded-2" color="inherit">DashBoard</Button></Link>
 
                     {!admin && <div>
                         <Link to={`${url}/payment`}><Button className="btn-primary m-2 p-2 rounded-2" color="inherit">Payment</Button></Link>
@@ -65,6 +66,9 @@ const DashBoard = () => {
                 <div className="col-md-8">
 
                     <Switch>
+                        <Route exact path={`${path}/dashboard`}>
+                            <DashBoard></DashBoard>
+                        </Route>
 
                         <AdminRoute path={`${path}/makeadmin`}>
                             <MakeAdmin></MakeAdmin>
