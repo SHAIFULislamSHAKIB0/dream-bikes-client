@@ -20,6 +20,7 @@ const Bookings = () => {
 
 
     const onSubmit = data => {
+        data.status = "pending";
         // console.log(data)
         axios.post('https://hidden-anchorage-44915.herokuapp.com/orders', data)
             .then(res => {

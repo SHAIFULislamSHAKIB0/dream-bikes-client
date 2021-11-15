@@ -6,6 +6,11 @@ const ManageAllOrders = () => {
     const [orders, setOrders] = useState([])
     const { user, isLoading } = useAuth();
     // console.log(orders)
+    const [status, setStatus] = useState("");
+
+    const handleStatus = (e) => {
+        setStatus(e.target.value);
+    };
 
     useEffect(() => {
         fetch('https://hidden-anchorage-44915.herokuapp.com/orders')
@@ -16,6 +21,8 @@ const ManageAllOrders = () => {
     if (isLoading) {
         return <Spinner animation="border" variant="success" />
     }
+
+
 
     const handleDelete = (id) => {
         const url = `https://hidden-anchorage-44915.herokuapp.com/orders/${id}`
@@ -36,6 +43,19 @@ const ManageAllOrders = () => {
                 })
         }
     }
+
+    const handleUpdate = (id) => {
+        fetch(`http://localhost:5000/updateStatus/${id}`, {
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ status }),
+        });
+
+        console.log(id);
+    };
+
+
+
     return (
         <div>
             <h2>Here we manage all Orders</h2>
@@ -49,9 +69,21 @@ const ManageAllOrders = () => {
                                 <small>Name: {order?.name}</small>
                                 <h6>CC: {order?.cc}</h6>
                                 <p>Email: {order?.email}</p>
+                                <input
+                                    onChange={handleStatus}
+                                    type="text"
+                                    defaultValue={order?.status}
+                                />
+                                <button
+                                    onClick={() => handleUpdate(order?._id)}
+                                    className="btn bg-success m-2 p-2"
+                                >
+                                    Update
+                                </button>
                             </div>
                             <div>
-                                <button onClick={() => handleDelete(order?._id)} className="btn btn-primary rounded border border-2 m-3 p-3">Cancel</button>
+                                <button onClick={() => handleDelete(order?._id)} className="btn btn-primary rounded border border-2 m-2 p-2">Cancel</button>
+
                             </div>
                         </div>
                     </div>

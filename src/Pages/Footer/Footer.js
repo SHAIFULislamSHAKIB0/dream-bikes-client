@@ -1,5 +1,4 @@
 import { faFacebookSquare, faInstagramSquare, faTwitterSquare, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faMap, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import './Footer.css'
@@ -38,7 +37,7 @@ const Footer = () => {
 
                                 <div className="phone d-flex align-items-center justify-content-center mt-4">
                                     <div className="foter-phone-icon">
-                                        <FontAwesomeIcon icon={faPhone} />
+                                        {/* <FontAwesomeIcon icon={faPhone} /> */}
                                     </div>
                                     <div>
                                         <h5>+8801816800887</h5>
@@ -47,7 +46,7 @@ const Footer = () => {
                                 </div>
                                 {<div className="map d-flex align-items-center justify-content-center mt-2">
                                     <div className="foter-phone-icon">
-                                        <FontAwesomeIcon icon={faMap} />
+                                        {/* <FontAwesomeIcon icon={faMap} /> */}
                                     </div>
                                     <div>
                                         <p>

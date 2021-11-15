@@ -2,6 +2,7 @@ import React from 'react';
 import { Spinner } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
 import Contact from '../../Contact/Contact';
+import CustomerReviews from '../../CustomerReviews/CustomerReviews';
 
 
 import Banner from '../Banner/Banner'
@@ -17,7 +18,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Bikes></Bikes>
-            {/* <Reviews></Reviews> */}
+            <CustomerReviews></CustomerReviews>
             <Contact></Contact>
 
         </div>

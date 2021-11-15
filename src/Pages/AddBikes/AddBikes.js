@@ -18,7 +18,7 @@ const AddBikes = () => {
     }
     return (
         <div className="add-bike m-4">
-            <h3>Please  addBikes</h3>
+            <h3 className="text-primary">Please  addBikes</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input {...register("name", { required: true, maxLength: 20 })} placeholder="name" />
 

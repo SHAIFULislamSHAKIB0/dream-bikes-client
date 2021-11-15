@@ -51,7 +51,8 @@ const MyOrders = () => {
                                 <h4 className="p-2">BikeName: {order?.bikename}</h4>
                                 <h6>CC: {order?.cc} </h6>
                                 <p>Email: {order?.email}</p>
-                                <small>Price: {order.price} $</small>
+                                <small>Price: {order?.price} $</small>
+                                <h6>Status: {order?.status}</h6>
                             </div>
                             <div>
                                 <button onClick={() => handleDelete(order?._id)} className="btn-danger border border-2 rounded m-2 p-3">Cancel Order</button>
