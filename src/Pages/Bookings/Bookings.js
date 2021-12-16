@@ -16,12 +16,18 @@ const Bookings = () => {
         fetch(`https://hidden-anchorage-44915.herokuapp.com/bikes/${bikeId}`)
             .then(res => res.json())
             .then(data => setBikes(data))
-    }, [])
+    }, [bikeId])
 
 
     const onSubmit = data => {
         data.status = "pending";
-        // console.log(data)
+        data.email = user.email;
+        data.bikename = bikes.name;
+        data.cc = bikes.cc;
+        data.price = bikes.price;
+
+
+        console.log(data)
         axios.post('https://hidden-anchorage-44915.herokuapp.com/orders', data)
             .then(res => {
                 // console.log(res)
@@ -39,11 +45,11 @@ const Bookings = () => {
 
                 <input defaultValue={user?.displayName} {...register("name")} />
 
-                <input defaultValue={user?.email} {...register("email", { required: true })} />
+                <input defaultValue={user?.email} {...register("email", { disabled: false })} />
                 {errors.email && <span className="error">This field is required</span>}
-                <input defaultValue={bikes?.name} {...register("bikename", { required: true })} />
-                <input defaultValue={bikes?.cc} {...register("cc", { required: true })} />
-                <input placeholder="phone number" defaultValue={bikes?.price} {...register("price", { required: true })} />
+                <input defaultValue={bikes?.name} {...register("bikename", { disabled: false })} />
+                <input defaultValue={bikes?.cc} {...register("cc", { disabled: false })} />
+                <input placeholder="price" defaultValue={bikes?.price} {...register("price", { disabled: false })} />
 
                 <input placeholder="Please Enter Your Phone number" defaultValue="" {...register("phone")} />
 
